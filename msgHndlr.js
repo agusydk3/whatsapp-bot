@@ -8,7 +8,7 @@ const color = require('./lib/color')
 const { spawn, exec } = require('child_process')
 const nhentai = require('nhentai-js')
 const { API } = require('nhentai-api')
-const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss } = require('./lib/functions')
+const { liriklagu, quotemaker, randomNimek, fb, sleep, jadwalTv, ss, wall } = require('./lib/functions')
 const { help, snk, info, donate, readme, listChannel } = require('./lib/help')
 const { stdout } = require('process')
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
@@ -309,7 +309,7 @@ module.exports = msgHandler = async (client, message) => {
             const hasil = `*${waktu}*\n📍 *Lokasi* : *${lokasi}*\n〽️ *Kedalaman* : *${kedalaman}*\n💢 *Magnitude* : *${magnitude}*\n🔘 *Potensi* : *${potensi}*\n📍 *Koordinat* : *${koordinat}*`
             client.sendFileFromUrl(from, map, 'shakemap.jpg', hasil, id)
             break
-	case 'wallpaper':
+	case '!wallpaper':
             if (args.length == 0) return client.reply(from, 'Wrong Format!', id)
             const query = body.slice(6)
             const walls = await wall(query)
