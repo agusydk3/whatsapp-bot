@@ -470,7 +470,7 @@ module.exports = msgHandler = async (client, message) => {
             const Owner_ = chat.groupMetadata.owner
             await client.sendTextWithMentions(from, `Owner Group : @${Owner_}`)
             break
-	case 'groupinfo' :
+	case '!groupinfo' :
             if (!isGroupMsg) return client.reply(from, '.', message.id) 
             var totalMem = chat.groupMetadata.participants.length
             var desc = chat.groupMetadata.desc
