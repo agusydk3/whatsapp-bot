@@ -309,6 +309,13 @@ module.exports = msgHandler = async (client, message) => {
             const hasil = `*${waktu}*\n📍 *Lokasi* : *${lokasi}*\n〽️ *Kedalaman* : *${kedalaman}*\n💢 *Magnitude* : *${magnitude}*\n🔘 *Potensi* : *${potensi}*\n📍 *Koordinat* : *${koordinat}*`
             client.sendFileFromUrl(from, map, 'shakemap.jpg', hasil, id)
             break
+	case 'wallpaper':
+            if (args.length == 0) return client.reply(from, 'Wrong Format!', id)
+            const query = body.slice(6)
+            const walls = await wall(query)
+            console.log(walls)
+            await client.sendFileFromUrl(from, walls, 'walls.jpg', '', id)
+            break
         case '!anime':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!anime [query]*\nContoh : *!anime darling in the franxx*', id)
             const animek = await get.get('https://mhankbarbar.herokuapp.com/api/dewabatch?q=' + body.slice(7)).json()
