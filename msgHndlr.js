@@ -73,7 +73,7 @@ module.exports = msgHandler = async (client, message) => {
         switch(command) {
         case '!sticker':
         case '!stiker':
-	    client.sendText(from, 'Haik Daling', id)
+	    client.reply(from, 'Haik Daling', id)
             if (isMedia && type === 'image') {
                 const mediaData = await decryptMedia(message, uaOverride)
                 const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
