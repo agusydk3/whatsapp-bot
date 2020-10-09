@@ -40,7 +40,7 @@ module.exports = msgHandler = async (client, message) => {
         const mess = {
             wait: '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar',
             error: {
-                St: '[❗] Kirim gambar dengan caption *!sticker* atau tag gambar yang sudah dikirim',
+                St: '[❗] BAKKA, Kirim gambar dengan caption *!sticker* atau tag gambar yang sudah dikirim',
                 Qm: '[❗] Terjadi kesalahan, mungkin themenya tidak tersedia!',
                 Yt3: '[❗] Terjadi kesalahan, tidak dapat meng konversi ke mp3!',
                 Yt4: '[❗] Terjadi kesalahan, mungkin error di sebabkan oleh sistem.',
@@ -625,6 +625,12 @@ ${desc}`)
             const chord = await get.get('https://mhankbarbar.herokuapp.com/api/chord?q='+ query__).json()
             if (chord.error) return client.reply(from, chord.error, id)
             client.reply(from, chord.result, id)
+            break
+	case '!shrtlink':
+            if (args.length === 1)  return await client.reply(from, 'Kirim perintah *!shrtlink https://google.com*', id)
+            const slink = await get.get('https://api.haipbis.xyz/bitly?url='+ args[1]).json()
+            if (slink.error) return await client.reply(from, slink.error, id)
+            await client.reply(from, `ShortLink : ${slink.result}`, id)
             break
         case '!listdaerah':
             const listDaerah = await get('https://mhankbarbar.herokuapp.com/daerah').json()
