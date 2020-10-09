@@ -470,6 +470,26 @@ module.exports = msgHandler = async (client, message) => {
             const Owner_ = chat.groupMetadata.owner
             await client.sendTextWithMentions(from, `Owner Group : @${Owner_}`)
             break
+	case 'groupinfo' :
+            if (!isGroupMsg) return client.reply(from, '.', message.id) 
+            var totalMem = chat.groupMetadata.participants.length
+            var desc = chat.groupMetadata.desc
+            var groupname = name
+            var welgrp = welkom.includes(chat.id)
+            var ngrp = nsfw_.includes(chat.id)
+            var grouppic = await client.getProfilePicFromServer(chat.id)
+            if (grouppic == undefined) {
+                 var pfp = errorurl
+            } else {
+                 var pfp = grouppic 
+            }
+            await client.sendFileFromUrl(from, pfp, 'group.png', `*${groupname}* 
+🌐️ *Members: ${totalMem}*
+💌️ *Welcome: ${welgrp}*
+⚜️ *NSFW: ${ngrp}*
+📃️ *Group Description* 
+${desc}`)
+        break
         case '!mentionall':
             if (!isGroupMsg) return client.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (!isGroupAdmins) return client.reply(from, 'Perintah ini hanya bisa di gunakan oleh admin group', id)
