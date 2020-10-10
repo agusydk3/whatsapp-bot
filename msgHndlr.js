@@ -791,7 +791,7 @@ ${desc}`)
 	case '!server':
 	    await client.sendText(from,`Penggunaan RAM: *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*\nCPU: ${os.cpus().length}@${os.cpus()[0].model}`)
             break
-	case 'profile':
+	case '!profile':
             var role = 'None'
               if (isGroupMsg) {
               if (!quotedMsg) {
