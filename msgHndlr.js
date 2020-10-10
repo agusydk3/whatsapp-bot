@@ -13,6 +13,7 @@ const { help, snk, info, donate, readme, listChannel } = require('./lib/help')
 const { stdout } = require('process')
 const nsfw_ = JSON.parse(fs.readFileSync('./lib/NSFW.json'))
 const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
+const ban = JSON.parse(fs.readFileSync('./lib/banned.json'))
 
 moment.tz.setDefault('Asia/Jakarta').locale('id')
 
