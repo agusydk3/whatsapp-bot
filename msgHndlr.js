@@ -791,6 +791,40 @@ ${desc}`)
 	case '!server':
 	    await client.sendText(from,`Penggunaan RAM: *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*\nCPU: ${os.cpus().length}@${os.cpus()[0].model}`)
             break
+	case 'profile':
+            var role = 'None'
+              if (isGroupMsg) {
+              if (!quotedMsg) {
+              var block = ban.includes(author)
+              var pic = await client.getProfilePicFromServer(author)
+              var namae = pushname
+              var sts = await client.getStatus(author)
+              var adm = isGroupAdmins
+              const { status } = sts
+               if (pic == undefined) {
+               var pfp = errorurl 
+               } else {
+               var pfp = pic
+               } 
+             await client.sendFileFromUrl(from, pfp, 'pfp.jpg', `🔖️ *Username: ${namae}*\n\n💌️ *User Info: ${status}*\n\n✨️ *Role: ${role}*\n\n 👑️ *Admin: ${adm}*`)
+             } else if (quotedMsg) {
+             var qmid = quotedMsgObj.sender.id
+             var block = ban.includes(qmid)
+             var pic = await client.getProfilePicFromServer(qmid)
+             var namae = quotedMsgObj.sender.formattedName
+             var sts = await client.getStatus(qmid)
+             var admgrp = await client.getGroupAdmins(from)
+             var adm = admgrp.includes(qmid)
+             const { status } = sts
+              if (pic == undefined) {
+              var pfp = errorurl 
+              } else {
+              var pfp = pic
+              } 
+             await client.sendFileFromUrl(from, pfp, 'pfo.jpg', `🔖️ *Username: ${namae}*\n\n💌️ *User Info: ${status}*\n\n✨️ *Role: ${role}*\n\n 👑️ *Admin: ${adm}*`)
+             }
+            }
+            break
         case '!help':
             client.sendText(from, help)
             break
