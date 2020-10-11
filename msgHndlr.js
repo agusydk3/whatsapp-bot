@@ -18,7 +18,7 @@ moment.tz.setDefault('Asia/Jakarta').locale('id')
 
 module.exports = msgHandler = async (client, message) => {
     try {
-        const { type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, mentionedJidList } = message
+        const { type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, mentionedJidList, author } = message
         let { body } = message
         const { name, formattedTitle } = chat
         let { pushname, verifiedName } = sender
@@ -794,7 +794,6 @@ ${desc}`)
             var role = 'None'
               if (isGroupMsg) {
               if (!quotedMsg) {
-              var block = ban.includes(author)
               var pic = await client.getProfilePicFromServer(author)
               var namae = pushname
               var sts = await client.getStatus(author)
