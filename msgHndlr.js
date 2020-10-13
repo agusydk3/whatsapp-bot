@@ -16,6 +16,9 @@ const welkom = JSON.parse(fs.readFileSync('./lib/welcome.json'))
 
 moment.tz.setDefault('Asia/Jakarta').locale('id')
 
+const errorurl = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
+const errorurl2 = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
+
 module.exports = msgHandler = async (client, message) => {
     try {
         const { type, id, from, t, sender, isGroupMsg, chat, caption, isMedia, mimetype, quotedMsg, mentionedJidList, author } = message
