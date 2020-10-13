@@ -151,21 +151,6 @@ module.exports = msgHandler = async (client, message) => {
                 client.reply(from, 'Masukkan data bahasa : [id] untuk indonesia, [en] untuk inggris, [jp] untuk jepang, dan [ar] untuk arab', id)
             }
             break
-	case '!meme':
-            if ((isMedia || isQuotedImage) && args.length >= 2) {
-                const top = arg.split('|')[0]
-                const bottom = arg.split('|')[1]
-                const encryptMedia = isQuotedImage ? quotedMsg : message
-                const mediaData = await decryptMedia(encryptMedia, uaOverride)
-                const getUrl = await uploadImages(mediaData, false)
-                const ImageBase64 = await meme.custom(getUrl, top, bottom)
-                client.sendFile(from, ImageBase64, 'image.png', '', null, true)
-                    .then((serialized) => console.log(`Sukses Mengirim File dengan id: ${serialized} diproses selama ${processTime(t, moment())}`))
-                    .catch((err) => console.error(err))
-            } else {
-                await client.reply(from, 'Tidak ada gambar! Untuk membuka cara penggnaan kirim #menu [Wrong Format]', id)
-            }
-            break
         case '!nulis':
             if (args.length === 1) return client.reply(from, 'Kirim perintah *!nulis [teks]*', id)
             const text = body.slice(7)
